@@ -34,7 +34,7 @@ CORE=16
 # Time for the job. Max 48:00:00
 TIME=48:00:00
 # Mail address to send email
-MAIL="pdas001@ucr.edu"
+MAIL="xyz@mail.com"
 # States to send email aborts (a), begins (b), or ends (e): i.e. abe
 STT="e"
 
