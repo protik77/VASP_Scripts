@@ -36,3 +36,20 @@ This script will generate surface plot and output file for Origin
 Protik, Aug 2015. pdas001@ucr.edu
 
 **Version:** 1.2
+
+## Job Submission scripts
+
+### Job submission script for Gordon supercomputer in SDSC
+
+This scripts removes old files from staging area, then copies vasp INPUT
+files to staging are. User needs to give the input of certain variables.
+These are:  
+* JOB_NAME		-> Name of the job  
+* MODE        -> Copy mode: scf, ek or hse  
+* EXEC_NAME   -> Name of the executable (vasp or vasp_ncl)  
+* NODE	      -> Number of nodes intended  
+* CORE	      -> Number of cores per node  
+* TIME	      -> Max time for the job  
+* MAIL	      -> Mail address to send job status  
+* STT 	      -> States to send the mail.   
+ 		             a for abort, b for begin, e for end  
