@@ -12,6 +12,7 @@
 #	JOB_NAME  -> Name of the job
 #	MODE	  -> Copy mode: scf, ek or hse
 #	EXEC_NAME -> Name of the executable (vasp or vasp_ncl)
+#	VERSION	  -> Numerical version of vasp
 #	NODE	  -> Number of nodes intended
 #	CORE	  -> Number of cores per node
 #	TIME	  -> Max time for the job
@@ -22,9 +23,11 @@
 
 # User input.
 # Name of job
-JOB_NAME="test"
+JOB_NAME="mono"
 # Name of the executable: vasp or vasp_ncl
 EXEC_NAME="vasp"
+# vasp version. To see available version: module avail
+VERSION=5.4.1
 # Copy mode, 'scf', 'ek' or 'hse'
 MODE="scf"
 # Number of nodes intended.
@@ -32,9 +35,9 @@ NODE=1
 # Number of cores per node
 CORE=16
 # Time for the job. Max 48:00:00
-TIME=48:00:00
+TIME=02:00:00
 # Mail address to send email
-MAIL="xyz@mail.com"
+MAIL="abc@mail.com"
 # States to send email aborts (a), begins (b), or ends (e): i.e. abe
 STT="e"
 
@@ -116,7 +119,7 @@ cat > gordon.mpi<<!
 
 cd $RUN_DIR
 
-module load vasp/5.4.1
+module load vasp/$VERSION
 
 VASP=\$(which $EXEC_NAME)
 
@@ -124,7 +127,6 @@ mpirun_rsh -np $(($NODE * $CORE)) -hostfile \$PBS_NODEFILE \$VASP
 !
 
 echo "Created job script."
-
 
 JOBID=$(qsub gordon.mpi)
 echo "Job is queued. Job ID is: $JOBID"
